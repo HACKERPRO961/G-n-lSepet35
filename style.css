@@ -1,0 +1,1185 @@
+/* GönülSepet35 — pembe, kahve, krem marka teması */
+
+:root {
+  --pembe: #d84b7e;
+  --pembe-acik: #f4a9c1;
+  --pembe-soft: #fde8ef;
+  --kahve: #4b3621;
+  --kahve-orta: #6d4c35;
+  --altin: #c5a021;
+  --krem: #fff9f3;
+  --krem-koyu: #f3e6d8;
+  --beyaz: #ffffff;
+  --metin: #3d2a22;
+  --metin-acik: #6b5348;
+  --ig-gradient: linear-gradient(
+    135deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  --golge: 0 8px 32px rgba(75, 44, 32, 0.12);
+  --golge-pembe: 0 12px 40px rgba(217, 79, 122, 0.25);
+  --radius: 16px;
+  --font: "Outfit", system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-script: "Pacifico", cursive;
+  --max: 1120px;
+  --header-h: 104px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--metin);
+  background:
+    radial-gradient(circle at 10% 20%, var(--pembe-soft) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, #f5ead8 0%, transparent 35%),
+    var(--krem);
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--kahve-orta);
+  text-decoration: none;
+  transition: color 0.2s, transform 0.2s;
+}
+
+/* Dekoratif arka plan lekeleri */
+.dekor {
+  position: fixed;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dekor--sol {
+  top: -120px;
+  left: -140px;
+  background: var(--pembe-acik);
+}
+
+.dekor--sag {
+  bottom: -100px;
+  right: -120px;
+  background: #e8d4a8;
+}
+
+main,
+.header,
+.footer,
+.ig-yuzen {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Uçan kalpler --- */
+.kalp {
+  position: fixed;
+  font-size: 1.25rem;
+  color: var(--pembe);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+  animation: kalp-yuksel 8s ease-in-out infinite;
+}
+
+.kalp--1 { top: 18%; left: 8%; animation-delay: 0s; }
+.kalp--2 { top: 55%; right: 6%; color: var(--altin); animation-delay: 2s; font-size: 1rem; }
+.kalp--3 { bottom: 25%; left: 12%; animation-delay: 4s; font-size: 0.9rem; }
+
+@keyframes kalp-yuksel {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.25; }
+  50% { transform: translateY(-20px) rotate(12deg); opacity: 0.5; }
+}
+
+/* --- Header --- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 252, 248, 0.98) 0%,
+    rgba(255, 249, 243, 0.94) 100%
+  );
+  backdrop-filter: blur(14px);
+  box-shadow: 0 4px 24px rgba(217, 79, 122, 0.12);
+}
+
+.header-cizgi {
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--kahve) 0%,
+    var(--pembe) 35%,
+    var(--altin) 65%,
+    var(--pembe-acik) 100%
+  );
+}
+
+.header-inner {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0.3rem 1.25rem 0.3rem 0;
+  min-height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
+}
+
+.logo-block {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+  flex-shrink: 0;
+  margin-right: auto;
+  padding-left: 0.25rem;
+}
+
+.logo-block:hover .marka-gonul {
+  filter: brightness(1.08);
+}
+
+.logo-img {
+  height: 92px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 14px rgba(75, 54, 33, 0.22));
+}
+
+.logo-yazi {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+}
+
+/* --- Marka yazısı (logo ile aynı stil, tüm sitede) --- */
+.marka {
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.marka-gonul {
+  font-family: var(--font-script);
+  color: var(--pembe);
+  font-weight: 400;
+  text-shadow: 0 1px 10px rgba(216, 75, 126, 0.35);
+}
+
+.marka-sepet {
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  color: var(--kahve);
+  letter-spacing: 0;
+}
+
+.marka-num {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--altin);
+  letter-spacing: -0.02em;
+}
+
+.marka-slogan {
+  display: block;
+  font-family: var(--font);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--kahve);
+  line-height: 1.3;
+}
+
+.marka--header {
+  font-size: clamp(1.5rem, 4.2vw, 2rem);
+}
+
+.marka-slogan--header {
+  font-size: clamp(0.58rem, 1.6vw, 0.72rem);
+  letter-spacing: 0.2em;
+  color: var(--metin-acik);
+  margin-top: 0.2rem;
+}
+
+.marka--hero {
+  font-size: clamp(2.25rem, 7vw, 3.35rem);
+}
+
+.marka-slogan--hero {
+  font-size: clamp(0.7rem, 2vw, 0.85rem);
+  margin-top: 0.65rem;
+  letter-spacing: 0.28em;
+  color: var(--kahve);
+}
+
+.marka--section {
+  font-size: clamp(1.85rem, 4.5vw, 2.5rem);
+}
+
+.marka--footer {
+  font-size: clamp(1.35rem, 3vw, 1.65rem);
+}
+
+.marka-slogan--footer {
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  color: var(--pembe-acik);
+  margin-top: 0.35rem;
+}
+
+.marka--telif {
+  font-size: 1.05em;
+  vertical-align: baseline;
+}
+
+.marka--telif .marka-gonul,
+.marka--telif .marka-sepet,
+.marka--telif .marka-num {
+  text-shadow: none;
+}
+
+/* Alt bilgi: koyu zemin — Sepet kahverengi kaybolmasın */
+.footer .marka-sepet {
+  color: #fff8f2;
+}
+
+.footer .marka-gonul {
+  color: var(--pembe-acik);
+  text-shadow: none;
+}
+
+.footer .marka-num {
+  color: var(--altin);
+}
+
+.header::after {
+  content: "";
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, var(--pembe-soft), var(--pembe-acik), var(--pembe-soft));
+}
+
+.menu-toggle {
+  order: 2;
+  margin-left: 0.5rem;
+}
+
+.nav {
+  display: flex;
+  gap: 0.35rem 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-left: auto;
+  order: 3;
+}
+
+.nav a:not(.nav-ig) {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--kahve);
+  padding: 0.4rem 0.65rem;
+  border-radius: 8px;
+  position: relative;
+}
+
+.nav a:not(.nav-ig)::after {
+  content: "";
+  position: absolute;
+  left: 0.65rem;
+  right: 0.65rem;
+  bottom: 0.2rem;
+  height: 2px;
+  background: linear-gradient(90deg, var(--pembe), var(--altin));
+  transform: scaleX(0);
+  transition: transform 0.25s;
+  border-radius: 2px;
+}
+
+.nav a:not(.nav-ig):hover,
+.nav a:not(.nav-ig):focus-visible {
+  color: var(--pembe);
+  background: var(--pembe-soft);
+}
+
+.nav a:not(.nav-ig):hover::after {
+  transform: scaleX(1);
+}
+
+.nav-ig {
+  background: var(--ig-gradient);
+  color: var(--beyaz) !important;
+  padding: 0.45rem 1rem !important;
+  border-radius: 999px;
+  font-weight: 600 !important;
+  box-shadow: var(--golge-pembe);
+}
+
+.nav-ig:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  border: none;
+  background: var(--pembe-soft);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 2px;
+  background: var(--kahve);
+  border-radius: 1px;
+}
+
+/* --- Hero --- */
+.hero {
+  padding: 2rem 1.25rem 2rem;
+  text-align: center;
+  background:
+    radial-gradient(ellipse 90% 70% at 50% -10%, rgba(248, 180, 200, 0.55) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 80% 60%, rgba(201, 162, 39, 0.15) 0%, transparent 50%),
+    linear-gradient(180deg, var(--beyaz) 0%, var(--krem) 100%);
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--pembe-acik) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Özellik şeridi */
+.ozellik-serit {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 1.25rem 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.ozellik-kutu {
+  background: linear-gradient(145deg, var(--beyaz) 0%, var(--pembe-soft) 100%);
+  border: 1px solid rgba(217, 79, 122, 0.2);
+  border-radius: var(--radius);
+  padding: 1.25rem 1rem;
+  text-align: center;
+  box-shadow: var(--golge);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.ozellik-kutu:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--golge-pembe);
+}
+
+.ozellik-ikon {
+  display: block;
+  font-size: 1.75rem;
+  color: var(--pembe);
+  margin-bottom: 0.35rem;
+}
+
+.ozellik-kutu strong {
+  display: block;
+  font-family: var(--font-serif);
+  color: var(--kahve);
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.ozellik-kutu span:last-child {
+  font-size: 0.8rem;
+  color: var(--metin-acik);
+}
+
+.dalga-ayrac {
+  color: var(--beyaz);
+  line-height: 0;
+  margin-top: -1px;
+}
+
+.dalga-ayrac svg {
+  width: 100%;
+  height: 56px;
+  display: block;
+}
+
+.hero-logo {
+  width: min(280px, 75vw);
+  margin: 0 auto 0.5rem;
+  filter: drop-shadow(0 8px 24px rgba(75, 44, 32, 0.15));
+  animation: logo-float 4s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.hero-marka-wrap {
+  margin: 0.25rem 0 1.25rem;
+  text-align: center;
+}
+
+.hero-baslik {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 3.5vw, 1.65rem);
+  font-weight: 600;
+  color: var(--kahve);
+  margin: 0 0 0.5rem;
+  line-height: 1.35;
+}
+
+.hero-alt-baslik {
+  font-family: var(--font-script);
+  font-size: clamp(1.15rem, 3vw, 1.45rem);
+  color: var(--pembe);
+  margin: 0 0 1rem;
+  line-height: 1.4;
+}
+
+.hero-metin {
+  color: var(--metin-acik);
+  margin: 0 auto 2rem;
+  max-width: 28rem;
+}
+
+.hero-butonlar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* --- Butonlar --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--pembe) 0%, #b83d65 50%, var(--pembe) 100%);
+  background-size: 200% auto;
+  color: var(--beyaz);
+  box-shadow: var(--golge-pembe);
+  animation: btn-parla 3s linear infinite;
+}
+
+@keyframes btn-parla {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.03);
+  filter: brightness(1.08);
+  color: var(--beyaz);
+}
+
+.btn-instagram {
+  background: var(--ig-gradient);
+  color: var(--beyaz);
+  box-shadow: 0 6px 24px rgba(188, 24, 136, 0.35);
+}
+
+.btn-instagram:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.06);
+  color: var(--beyaz);
+}
+
+.btn-instagram--buyuk {
+  padding: 1rem 2rem;
+  font-size: 1.05rem;
+}
+
+.btn-ig-icon {
+  flex-shrink: 0;
+}
+
+/* --- Bölümler --- */
+.section {
+  padding: 4.5rem 1.25rem;
+}
+
+.section-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.section-etiket {
+  display: block;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pembe);
+  margin: 0 0 0.5rem;
+}
+
+.section-etiket--acik {
+  color: var(--pembe-acik);
+}
+
+.section-baslik {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 700;
+  color: var(--kahve);
+  margin: 0 0 0.75rem;
+  text-align: center;
+}
+
+.section-baslik--sol {
+  text-align: left;
+}
+
+.section-baslik .marka {
+  display: inline-block;
+}
+
+.section-alt-baslik {
+  text-align: center;
+  color: var(--metin-acik);
+  margin: 0 auto 2.5rem;
+  max-width: 34rem;
+  font-size: 1.05rem;
+}
+
+#urunler {
+  background: var(--beyaz);
+  position: relative;
+}
+
+#urunler::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--pembe), var(--altin), var(--pembe));
+}
+
+.urunler-durum {
+  text-align: center;
+  color: var(--metin-acik);
+  padding: 2rem;
+}
+
+.urunler-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.urun-kart {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, var(--beyaz) 0%, var(--krem) 100%);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  box-shadow: var(--golge);
+  transition: transform 0.35s, box-shadow 0.35s;
+  position: relative;
+}
+
+.urun-kart::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  padding: 2px;
+  background: linear-gradient(135deg, var(--pembe-acik), var(--altin), var(--pembe));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.6;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.urun-kart:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--golge-pembe);
+}
+
+.urun-kart:hover::before {
+  opacity: 1;
+}
+
+.urun-gorsel-parlama {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+  pointer-events: none;
+}
+
+.urun-kart:hover .urun-gorsel-parlama {
+  transform: translateX(100%);
+}
+
+.urun-gorsel-wrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: var(--krem-koyu);
+  overflow: hidden;
+}
+
+.urun-gorsel {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.urun-kart:hover .urun-gorsel {
+  transform: scale(1.06);
+}
+
+.urun-rozet {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--pembe);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.urun-icerik {
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.urun-baslik {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: var(--kahve);
+  line-height: 1.3;
+}
+
+.urun-fiyat {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--kahve-orta);
+  margin: 0 0 0.75rem;
+}
+
+.urun-fiyat--ig {
+  color: var(--pembe);
+  font-size: 0.85rem;
+}
+
+.urun-aciklama {
+  font-size: 0.92rem;
+  color: var(--metin-acik);
+  margin: 0 0 1.25rem;
+  flex: 1;
+}
+
+.urun-icerik .btn-instagram {
+  width: 100%;
+  margin-top: auto;
+}
+
+/* --- Hakkımızda --- */
+.section--warm {
+  background: linear-gradient(180deg, var(--krem-koyu) 0%, var(--krem) 100%);
+}
+
+.hakkimizda-grid {
+  display: grid;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .hakkimizda-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.hakkimizda-grid p {
+  margin: 0 0 1rem;
+  color: var(--metin-acik);
+}
+
+.hakkimizda-kartlar {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.hakkimizda-kart {
+  background: var(--beyaz);
+  padding: 1.25rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--krem-koyu);
+  box-shadow: var(--golge);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: transform 0.2s;
+}
+
+.hakkimizda-kart:hover {
+  transform: translateY(-4px);
+  border-color: var(--pembe-acik);
+}
+
+.hakkimizda-ikon {
+  font-size: 1.5rem;
+  color: var(--pembe);
+}
+
+.hakkimizda-kart strong {
+  font-family: var(--font-serif);
+  color: var(--kahve);
+  font-size: 1.1rem;
+}
+
+.hakkimizda-kart span:last-child {
+  font-size: 0.85rem;
+  color: var(--metin-acik);
+}
+
+/* --- Instagram banner --- */
+.section--ig {
+  padding-bottom: 5rem;
+}
+
+.ig-banner {
+  background: var(--ig-gradient);
+  border-radius: 24px;
+  padding: 3rem 2rem;
+  text-align: center;
+  color: var(--beyaz);
+  box-shadow: var(--golge-pembe);
+  position: relative;
+  overflow: hidden;
+}
+
+.ig-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.15), transparent 50%);
+  pointer-events: none;
+}
+
+.ig-banner-icerik {
+  position: relative;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.ig-banner-baslik {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  margin: 0 0 1rem;
+  font-weight: 700;
+}
+
+.ig-banner p {
+  margin: 0 0 1.75rem;
+  opacity: 0.95;
+  line-height: 1.6;
+}
+
+.ig-banner .btn-instagram {
+  background: var(--beyaz);
+  color: #bc1888;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.ig-banner .btn-instagram:hover {
+  background: var(--krem);
+  color: #bc1888;
+}
+
+/* --- Footer --- */
+.footer {
+  background: linear-gradient(180deg, #3d2a1e 0%, var(--kahve) 40%, #2f2118 100%);
+  color: var(--krem);
+  margin-top: 0;
+}
+
+.footer-cizgi {
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--altin) 0%,
+    var(--pembe) 50%,
+    var(--altin) 100%
+  );
+}
+
+.footer-icerik {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 1.75rem;
+}
+
+.footer-ust {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 2rem 2.5rem;
+  align-items: center;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 249, 243, 0.12);
+  margin-bottom: 1.5rem;
+}
+
+.footer-marka-blok {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: inherit;
+  justify-self: start;
+}
+
+.footer-marka-blok:hover .marka-gonul {
+  color: var(--pembe-acik);
+}
+
+.footer-logo {
+  height: 72px;
+  width: auto;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 4px;
+}
+
+.footer-marka-yazi {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.footer-nav a {
+  color: rgba(255, 249, 243, 0.85);
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: color 0.2s, padding-left 0.2s;
+}
+
+.footer-nav a:hover {
+  color: var(--pembe-acik);
+  padding-left: 4px;
+}
+
+.footer-ig-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.35rem;
+  background: var(--ig-gradient);
+  color: var(--beyaz);
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+}
+
+.footer-ig-btn:hover {
+  transform: translateY(-2px);
+  color: var(--beyaz);
+  filter: brightness(1.06);
+}
+
+.footer-alt {
+  text-align: center;
+}
+
+.footer-telif {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  color: rgba(255, 249, 243, 0.9);
+}
+
+.footer-telif .marka-gonul {
+  color: var(--pembe-acik);
+  text-shadow: none;
+}
+
+.footer-telif .marka-sepet {
+  color: #ffffff;
+  font-weight: 700;
+  -webkit-text-fill-color: #ffffff;
+}
+
+.footer-telif .marka-num {
+  color: var(--altin);
+}
+
+.footer-not {
+  margin: 0;
+  font-size: 0.78rem;
+  color: rgba(255, 249, 243, 0.55);
+  letter-spacing: 0.04em;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+/* --- Yüzen Instagram --- */
+.ig-yuzen {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--ig-gradient);
+  color: var(--beyaz);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 28px rgba(188, 24, 136, 0.45);
+  z-index: 90;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: ig-pulse 2.5s ease-in-out infinite;
+}
+
+.ig-yuzen:hover {
+  transform: scale(1.1);
+  color: var(--beyaz);
+}
+
+@keyframes ig-pulse {
+  0%,
+  100% {
+    box-shadow: 0 8px 28px rgba(188, 24, 136, 0.45);
+  }
+  50% {
+    box-shadow: 0 8px 36px rgba(188, 24, 136, 0.65);
+  }
+}
+
+/* --- Fade-in animasyon --- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in--gorunur {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Mobil --- */
+@media (max-width: 900px) {
+  .footer-ust {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .footer-marka-blok {
+    justify-self: center;
+  }
+
+  .footer-marka-yazi {
+    align-items: center;
+  }
+
+  .footer-nav {
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-ig-btn {
+    justify-self: center;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-inner {
+    padding-left: 0;
+  }
+
+  .logo-block {
+    padding-left: 0.15rem;
+    gap: 0.5rem;
+  }
+
+  .logo-img {
+    height: 80px;
+  }
+
+  .ozellik-serit {
+    grid-template-columns: 1fr;
+    padding-bottom: 2rem;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav {
+    position: fixed;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    background: var(--beyaz);
+    padding: 1rem 1.25rem 1.5rem;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--krem-koyu);
+    box-shadow: var(--golge);
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s, opacity 0.25s;
+  }
+
+  .nav--acik {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav a {
+    padding: 0.5rem 0;
+  }
+
+  .nav-ig {
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+
+  .hakkimizda-kartlar {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 3.5rem 1.25rem;
+  }
+
+  .ig-yuzen {
+    bottom: 1rem;
+    right: 1rem;
+    width: 52px;
+    height: 52px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-logo,
+  .ig-yuzen {
+    animation: none;
+  }
+
+  .fade-in {
+    opacity: 1;
+    transform: none;
+  }
+}
